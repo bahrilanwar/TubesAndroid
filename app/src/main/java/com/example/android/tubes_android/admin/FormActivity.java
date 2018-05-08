@@ -21,10 +21,10 @@ import com.google.firebase.database.FirebaseDatabase;
 public class FormActivity extends AppCompatActivity {
 
     private EditText RC, RN, time, day;
-    private RadioButton status;
+    private String status;
     private Button btnBook;
     private RadioGroup rg;
-//    private RadioButton rbB, rbO;
+    private RadioButton rbB, rbO;
 
     private FirebaseAuth mAuth;
 
@@ -35,7 +35,6 @@ public class FormActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setTitle("Form for Book");
         setContentView(R.layout.activity_form);
-        onRadioButtonClicked();
 
         mAuth=FirebaseAuth.getInstance();
 
@@ -45,8 +44,8 @@ public class FormActivity extends AppCompatActivity {
         time = findViewById(R.id.startTime);
         day = findViewById(R.id.lblDay);
         rg = findViewById(R.id.rbg);
-//        rbB = findViewById(R.id.rbBooked);
-//        rbO = findViewById(R.id.rbOpened);
+        rbB = findViewById(R.id.rbBooked);
+        rbO = findViewById(R.id.rbOpened);
         btnBook = findViewById(R.id.book);
 
         ref = FirebaseDatabase.getInstance().getReference("classlist");
@@ -56,24 +55,21 @@ public class FormActivity extends AppCompatActivity {
     }
 
 
-    public void onRadioButtonClicked() {
-        btnBook.setOnClickListener(new View.OnClickListener() {
-
-            @Override
-            public void onClick(View v) {
-
-                // get selected radio button from radioGroup
-                int selectedId = rg.getCheckedRadioButtonId();
-
-                // find the radiobutton by returned id
-                status = (RadioButton) findViewById(selectedId);
-
-            }
-
-        });
-    }
-
     public void input(View view) {
+
+        boolean checked = ((RadioButton) view).isChecked();
+        // Check which radio button was clicked
+        switch(view.getId()) {
+            case R.id.rbBooked:
+                if (checked)
+                    status = getString(R.string.booked);
+                break;
+            case R.id.rbOpened:
+                if (checked)
+                    status = getString(R.string.opened);
+                break;
+        }
+
         String key = ref.push().getKey();
         ref.child(key).setValue(new ListKelasModel(
                 key,
@@ -81,10 +77,10 @@ public class FormActivity extends AppCompatActivity {
                 RN.getText().toString(),
                 time.getText().toString(),
                 day.getText().toString(),
-                status.getText().toString()
+                status
 
         ));
-        Log.d("RB",status.getText().toString());
+        Log.d("RB",status);
         Toast.makeText(FormActivity.this, "Uploaded!", Toast.LENGTH_SHORT).show();
         startActivity(new Intent(FormActivity.this,MainAdmin.class));
         Log.d("upload", "sukses");
