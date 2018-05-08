@@ -56,16 +56,12 @@ public class FormActivity extends AppCompatActivity {
 
 
     public void input(View view) {
-
-        boolean checked = ((RadioButton) view).isChecked();
         // Check which radio button was clicked
         switch(view.getId()) {
             case R.id.rbBooked:
-                if (checked)
                     status = getString(R.string.booked);
                 break;
             case R.id.rbOpened:
-                if (checked)
                     status = getString(R.string.opened);
                 break;
         }
