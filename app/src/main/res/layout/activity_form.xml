@@ -78,14 +78,14 @@
             android:textSize="16sp"
             android:textStyle="bold" />
 
-        <EditText
+        <Spinner
             android:id="@+id/lblRoomName"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_gravity="center"
             android:gravity="center_vertical"
-            android:hint="Room Name"
-            android:textSize="16sp" />
+            android:textSize="16sp"
+            />
 
     </LinearLayout>
 
