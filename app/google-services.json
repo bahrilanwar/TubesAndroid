@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "197506866631",
+    "firebase_url": "https://kabooru-9ab3c.firebaseio.com",
+    "project_id": "kabooru-9ab3c",
+    "storage_bucket": "kabooru-9ab3c.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:197506866631:android:7b18df2b13ca2e3a",
+        "android_client_info": {
+          "package_name": "com.example.android.tubes_android"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "197506866631-7fip09paq7t38fjoseb40lh1t13qtgoj.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.android.tubes_android",
+            "certificate_hash": "009dd37e4ffc29b57fe03605d6fb6d6cbddabad6"
+          }
+        },
+        {
+          "client_id": "197506866631-460be6jh9cqt5drd68osqh9sk2vievn9.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCsWIrxyEGHEMo6uzehzED-lkmjAikr8mg"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "197506866631-460be6jh9cqt5drd68osqh9sk2vievn9.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

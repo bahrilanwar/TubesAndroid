@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">TUBES_ANDRO</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title_activity_main">Home</string>
+    <string name="about">Kabooru adalah sebuah aplikasi yang berfungsi untuk booking sebuah ruangan di gedung C Universitas Telkom. Di aplikasi ini kita dapat melihat list ruangan yang terdapat di gedung <![CDATA[
+, dapat melihat apakah ruangan tersebut sudah dipakai untuk keperluan tertentu dan kita dapat melihat list ruangan kedepannya yang sudah dibooking.
+    ]]></string>
+    <string name="a">\@telkomuniversity.ac.id</string>
+    <string name="day">Day :</string>
+    <string name="set">Set</string>
+    <string name="booked">Booked</string>
+    <string name="opened">Opened</string>
+    <string name="nothing">Nothing Clicked</string>
+</resources>
