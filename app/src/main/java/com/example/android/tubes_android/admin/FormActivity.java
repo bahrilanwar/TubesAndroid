@@ -13,6 +13,7 @@ import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.android.tubes_android.ListKelasModel;
@@ -23,7 +24,8 @@ import com.google.firebase.database.FirebaseDatabase;
 
 public class FormActivity extends AppCompatActivity {
 
-    private EditText RC, time, day;
+    private EditText time, day;
+    private TextView RC;
     private String status, rName;
     private Button btnBook;
     private Spinner RN;
@@ -34,7 +36,15 @@ public class FormActivity extends AppCompatActivity {
     private DatabaseReference ref;
 
     private String[] room = {
-            "KU2.01.01", "KU2.01.02", "KU2.01.03", "KU2.01.04", "KU2.01.05", "KU2.01.06", "KU2.01.07", "KU2.01.08", "KU2.01.09"
+            "KU2.01.01", "KU2.01.02", "KU2.01.03", "KU2.01.04", "KU2.01.05", "KU2.01.06", "KU2.01.07", "KU2.01.08", "KU2.01.09",
+            "KU2.02.01", "KU2.02.02", "KU2.02.03", "KU2.02.04", "KU2.02.05", "KU2.02.06", "KU2.02.07", "KU2.02.08", "KU2.02.09",
+            "KU2.03.01", "KU2.03.02", "KU2.03.03", "KU2.03.04", "KU2.03.05", "KU2.03.06", "KU2.03.07", "KU2.03.08", "KU2.03.09"
+    };
+
+    private String[] cRoom = {
+            "B101", "B102", "B103", "B104", "B105", "B106", "B107", "B108", "B109",
+            "B201", "B202", "B203", "B204", "B205", "B206", "B207", "B208", "B209",
+            "B101", "B302", "B303", "B304", "B305", "B306", "B307", "B308", "B309"
     };
 
     @Override
@@ -46,7 +56,7 @@ public class FormActivity extends AppCompatActivity {
         mAuth=FirebaseAuth.getInstance();
 
         //Inisialisasi Komponen
-//        RC = findViewById(R.id.lblRoomCode);
+        RC = findViewById(R.id.lblRoomCode);
         RN = findViewById(R.id.lblRoomName);
         time = findViewById(R.id.startTime);
         day = findViewById(R.id.lblDay);
@@ -78,6 +88,8 @@ public class FormActivity extends AppCompatActivity {
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
                 // mengambil value Spinner yang dipilih (diambil dari adapter)
                 rName = adapter.getItem(i);
+//                mengeset kode ruangan yang sesuai dengan nama ruangan ke textview kode ruangan
+                RC.setText(cRoom[i]);
             }
 
             @Override
@@ -108,7 +120,7 @@ public class FormActivity extends AppCompatActivity {
                 status
 
         ));
-        Log.d("RB",status);
+//        Log.d("RB",status);
         Toast.makeText(FormActivity.this, "Uploaded!", Toast.LENGTH_SHORT).show();
         startActivity(new Intent(FormActivity.this,MainAdmin.class));
         Log.d("upload", "sukses");

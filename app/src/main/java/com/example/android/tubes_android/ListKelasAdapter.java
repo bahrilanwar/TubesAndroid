@@ -112,6 +112,7 @@ public class ListKelasAdapter extends RecyclerView.Adapter<ListKelasAdapter.Phot
         public void toDetail(ListKelasModel model){
             Intent i = new Intent(context.getApplicationContext(),ViewActivity.class);
             i.putExtra(ViewActivity.EXTRA_ITEM, model);
+
             context.startActivity(i);
         }
     }
