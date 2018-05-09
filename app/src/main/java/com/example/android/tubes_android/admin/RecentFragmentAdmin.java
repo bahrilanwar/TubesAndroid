@@ -15,6 +15,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.DatePicker;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.example.android.tubes_android.ListKelasModel;
@@ -39,7 +40,7 @@ public class RecentFragmentAdmin extends Fragment {
     private Button btn;
     private SimpleDateFormat dateFormatter;
     private SimpleDateFormat dayFormatter;
-    private FloatingActionButton fab;
+
 
     private RecyclerView recyclerView;
     //private List<PhotoModel> datas;
@@ -80,7 +81,9 @@ public class RecentFragmentAdmin extends Fragment {
         FloatingActionButton myFab = (FloatingActionButton) view.findViewById(R.id.fab);
         myFab.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                startActivity(new Intent(v.getContext(),FormActivity.class));
+                Intent itu = new Intent(v.getContext(), FormActivity.class);
+                itu.putExtra("HARI", hari.getText());
+                startActivity(itu);
             }
         });
     }

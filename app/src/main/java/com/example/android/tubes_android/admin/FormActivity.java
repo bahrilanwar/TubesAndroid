@@ -10,6 +10,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Spinner;
@@ -24,9 +25,9 @@ import com.google.firebase.database.FirebaseDatabase;
 
 public class FormActivity extends AppCompatActivity {
 
-    private EditText time, day;
-    private TextView RC;
-    private String status, rName;
+    private EditText time1, time2;
+    private TextView RC, day;
+    private String status, rName, time;
     private Button btnBook;
     private Spinner RN;
     private RadioButton rbB, rbO;
@@ -50,7 +51,7 @@ public class FormActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setTitle("Form for Book");
+        setTitle("Form for Admin");
         setContentView(R.layout.activity_form);
 
         mAuth=FirebaseAuth.getInstance();
@@ -58,7 +59,8 @@ public class FormActivity extends AppCompatActivity {
         //Inisialisasi Komponen
         RC = findViewById(R.id.lblRoomCode);
         RN = findViewById(R.id.lblRoomName);
-        time = findViewById(R.id.startTime);
+        time1 = findViewById(R.id.startTime);
+        time2 = findViewById(R.id.finishTime);
         day = findViewById(R.id.lblDay);
         rbB = findViewById(R.id.rbBooked);
         rbO = findViewById(R.id.rbOpened);
@@ -66,6 +68,9 @@ public class FormActivity extends AppCompatActivity {
         btnBook = findViewById(R.id.book);
 
 
+        Intent ini = getIntent();
+        String hari = ini.getStringExtra("HARI");
+        day.setText(hari);
 
         spinnerListener();
 
@@ -110,12 +115,14 @@ public class FormActivity extends AppCompatActivity {
                 break;
         }
 
+        time = time1 +" - "+ time2;
+
         String key = ref.push().getKey();
         ref.child(key).setValue(new ListKelasModel(
                 key,
                 RC.getText().toString(),
                 rName,
-                time.getText().toString(),
+                time,
                 day.getText().toString(),
                 status
 
