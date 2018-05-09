@@ -9,7 +9,7 @@
     <string name="day">Day :</string>
     <string name="set">Set</string>
     <string name="booked">Booked</string>
-    <string name="opened">Opened</string>
+    <string name="opened">Open</string>
     <string name="nothing">Nothing Clicked</string>
 
 </resources>
