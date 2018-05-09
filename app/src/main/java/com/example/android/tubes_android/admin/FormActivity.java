@@ -51,7 +51,7 @@ public class FormActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setTitle("Form for Admin");
+        setTitle("Form for Create");
         setContentView(R.layout.activity_form);
 
         mAuth=FirebaseAuth.getInstance();

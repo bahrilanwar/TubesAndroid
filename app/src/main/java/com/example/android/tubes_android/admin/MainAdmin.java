@@ -304,7 +304,7 @@ public class MainAdmin extends AppCompatActivity {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
 
         builder.setTitle("Exit");
-        builder.setMessage("Are you sure you want to exit? niga");
+        builder.setMessage("Are you sure you want to exit?");
 
         builder.setPositiveButton("YES", new DialogInterface.OnClickListener() {
 

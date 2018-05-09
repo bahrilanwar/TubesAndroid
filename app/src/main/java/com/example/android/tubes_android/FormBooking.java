@@ -1,66 +1,66 @@
 package com.example.android.tubes_android;
 
-import android.annotation.SuppressLint;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
-import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 
-public class ViewActivity extends AppCompatActivity {
+import com.google.firebase.database.DatabaseReference;
+
+public class FormBooking extends AppCompatActivity {
 
     public static String EXTRA_ITEM = "EXTRA_VIEW_ITEM";
 
     //Attibut Komponen View
-    private TextView vUser, vRoomcode, vRoomname, vTime, vDay, vStatus, vNeeds;
+    private TextView xUser, xRoomcode, xRoomname, xTime, xDay, xStatus;
+    private EditText xIdentity, xNeeds, xPhone;
     private Button btnBook;
 
-    @SuppressLint("ResourceType")
+    private DatabaseReference ref;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setTitle("Detail");
-        setContentView(R.layout.activity_view);
-
-        //ambil user
-        Intent sini = getIntent();
-        String useer = sini.getStringExtra("userr");
-
+        setTitle("Form Booking");
+        setContentView(R.layout.activity_form_booking);
         //Inisialisasi Komponen View
-        vUser = findViewById(R.id.viewUser);
-        vRoomcode = findViewById(R.id.viewRoomcode);
-        vRoomname = findViewById(R.id.viewRoomname);
-        vTime = findViewById(R.id.viewTime);
-        vDay = findViewById(R.id.viewDay);
-        vStatus = findViewById(R.id.viewStatus);
-        vNeeds = findViewById(R.id.viewNeeds);
-        btnBook = findViewById(R.id.book);
+        xUser = findViewById(R.id.viewUser1);
+        xRoomcode = findViewById(R.id.viewRoomcode1);
+        xRoomname = findViewById(R.id.viewRoomname1);
+        xTime = findViewById(R.id.viewTime1);
+        xDay = findViewById(R.id.viewDay1);
+        xStatus = findViewById(R.id.viewStatus1);
 
-        vNeeds.setVisibility(View.INVISIBLE);
+        xNeeds = findViewById(R.id.viewNeeds1);
+        xIdentity = findViewById(R.id.iCode);
+        xPhone = findViewById(R.id.pNum);
+
+        btnBook = findViewById(R.id.bookk);
 
         //Pengecekan Item yang dikirimkan intent Lain
-        Intent ini = getIntent();
-        if (ini.getParcelableExtra(EXTRA_ITEM) != null) {
-            final ListKelasModel data = ini.getParcelableExtra(EXTRA_ITEM);
-            vUser.setText(useer);
-            vRoomcode.setText(data.getClasscode());
-            vRoomname.setText(data.getClassname());
-            vTime.setText(data.getTime());
-            vDay.setText(data.getDay());
-            vStatus.setText(data.getStatus());
+        Intent sini = getIntent();
+        String a = sini.getStringExtra("data1");
+        String b = sini.getStringExtra("data2");
+        String c = sini.getStringExtra("data3");
+        String d = sini.getStringExtra("data4");
+        String e = sini.getStringExtra("data5");
+        String f = sini.getStringExtra("data6");
 
-            String a = "Booked";
+        //Set Intent ke Textview
+        xUser.setText(a);
+        xRoomcode.setText(b);
+        xRoomname.setText(c);
+        xTime.setText(d);
+        xDay.setText(e);
+        xStatus.setText(f);
 
-            if (vStatus.getText().toString().equals(a)) {
-                btnBook.setVisibility(View.INVISIBLE);
-            } else {
-                btnBook.setVisibility(View.VISIBLE);
-            }
 
             /* btnBook.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -90,32 +90,24 @@ public class ViewActivity extends AppCompatActivity {
                     }
                 }
             }); */
-        }
+
     }
 
     public void books(View view) {
-        String a = "Booking Now!";
-        if (!btnBook.getText().equals(a)) {
-            AlertDialog alertDialog = new AlertDialog.Builder(ViewActivity.this).create();
-            alertDialog.setTitle("Alert");
-            alertDialog.setMessage("Sorry, this class was used/booked!");
-            alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "OK",
-                    new DialogInterface.OnClickListener() {
-                        public void onClick(DialogInterface dialog, int which) {
-                            dialog.dismiss();
-                        }
-                    });
-            alertDialog.show();
-        }else {
-            Intent sana = new Intent(ViewActivity.this, FormBooking.class);
-            sana.putExtra("data1", vUser.getText().toString());
-            sana.putExtra("data2", vRoomcode.getText().toString());
-            sana.putExtra("data3", vRoomname.getText().toString());
-            sana.putExtra("data4", vTime.getText().toString());
-            sana.putExtra("data5", vDay.getText().toString());
-            sana.putExtra("data6", vStatus.getText().toString());
-            startActivity(sana);
-        }
+
+        xStatus.setText("Booked");
+
+        String key = ref.push().getKey();
+        ref.child(key).setValue(new ListKelasModel(
+                key,
+                xRoomcode.getText().toString(),
+                xRoomname.getText().toString(),
+                xTime.getText().toString(),
+                xDay.getText().toString(),
+                xStatus.getText().toString()
+
+        ));
+
     }
 
     @Override

@@ -105,6 +105,8 @@ public class MainActivity extends AppCompatActivity {
 
         mFirebaseDatabase=FirebaseDatabase.getInstance();
 
+        Intent jauh = new Intent(MainActivity.this, ViewActivity.class);
+        jauh.putExtra("userr", makeUsername(mAuth.getCurrentUser().getEmail()));
     }
 
 //

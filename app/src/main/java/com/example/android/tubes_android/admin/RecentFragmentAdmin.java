@@ -111,7 +111,7 @@ public class RecentFragmentAdmin extends Fragment {
                 Calendar newDate = Calendar.getInstance();
                 newDate.set(year, monthOfYear, dayOfMonth);
                 Date date = new Date();
-                String a = dateFormatter.format(newDate.getTime());
+                final String a = dateFormatter.format(newDate.getTime());
                 final String b = dayFormatter.format(newDate.getTime());
                 /**
                  * Update TextView dengan tanggal yang kita pilih
@@ -134,7 +134,7 @@ public class RecentFragmentAdmin extends Fragment {
                             List<ListKelasModel> list = new ArrayList<>();
                             for(DataSnapshot postSnapshot : dataSnapshot.getChildren()){
                                 ListKelasModel item = postSnapshot.getValue(ListKelasModel.class);
-                                if(item.getDay().equals(b)){
+                                if(item.getDay().equals(a)){
                                     list.add(item);
                                 }
                             }

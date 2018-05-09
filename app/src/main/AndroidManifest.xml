@@ -36,9 +36,11 @@
         <activity android:name=".SignUpActivity" />
         <activity android:name=".admin.FormActivity" />
         <activity android:name=".admin.RecentFragmentAdmin" />
-        <activity android:name=".admin.MainAdmin"
+        <activity
+            android:name=".admin.MainAdmin"
             android:label="@string/title_activity_main"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".FormBooking"></activity>
     </application>
 
 </manifest>

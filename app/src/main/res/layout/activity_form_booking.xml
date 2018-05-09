@@ -21,7 +21,7 @@
             android:padding="10dp">
 
             <TextView
-                android:id="@+id/viewUser"
+                android:id="@+id/viewUser1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_alignParentLeft="true"
@@ -51,7 +51,7 @@
                 android:textStyle="bold" />
 
             <TextView
-                android:id="@+id/viewRoomcode"
+                android:id="@+id/viewRoomcode1"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_gravity="center"
@@ -81,7 +81,7 @@
                 android:textStyle="bold" />
 
             <TextView
-                android:id="@+id/viewRoomname"
+                android:id="@+id/viewRoomname1"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_gravity="center"
@@ -111,12 +111,12 @@
                 android:textStyle="bold" />
 
             <TextView
-                android:id="@+id/viewTime"
+                android:id="@+id/viewTime1"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_gravity="center"
                 android:gravity="center_vertical"
-                android:text="Day" />
+                android:text="day" />
 
         </LinearLayout>
 
@@ -141,12 +141,12 @@
                 android:textStyle="bold" />
 
             <TextView
-                android:id="@+id/viewDay"
+                android:id="@+id/viewDay1"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_gravity="center"
                 android:gravity="center_vertical"
-                android:text="Time" />
+                android:text="time" />
 
         </LinearLayout>
 
@@ -171,18 +171,18 @@
                 android:textStyle="bold" />
 
             <TextView
-                android:id="@+id/viewStatus"
+                android:id="@+id/viewStatus1"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_gravity="center"
                 android:gravity="center_vertical"
-                android:text="Status" />
+                android:text="statuss" />
 
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="94dp"
+            android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:orientation="horizontal">
 
@@ -198,26 +198,93 @@
                 android:layout_height="match_parent"
                 android:text=":"
                 android:textSize="16sp"
+                android:gravity="center_vertical"
                 android:textStyle="bold" />
 
-            <TextView
-                android:id="@+id/viewNeeds"
+            <EditText
+                android:id="@+id/viewNeeds1"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_gravity="center"
+                android:layout_height="wrap_content"
                 android:gravity="center_vertical"
+                android:hint="Purpose"
                 android:textSize="16sp" />
 
         </LinearLayout>
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="110dp"
+                android:layout_height="wrap_content"
+                android:text="Identity Number"
+                android:textSize="16sp"
+                android:gravity="center_vertical"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="18dp"
+                android:layout_height="match_parent"
+                android:text=":"
+                android:textSize="16sp"
+                android:gravity="center_vertical"
+                android:textStyle="bold" />
+
+            <EditText
+                android:id="@+id/iCode"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:textSize="16sp"
+                android:gravity="center_vertical"
+                android:hint="Civitas ID" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:layout_marginTop="10dp">
+
+            <TextView
+                android:layout_width="110dp"
+                android:layout_height="wrap_content"
+                android:text="Phone Number"
+                android:textSize="16sp"
+                android:gravity="center_vertical"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="18dp"
+                android:layout_height="match_parent"
+                android:text=":"
+                android:textSize="16sp"
+                android:gravity="center_vertical"
+                android:textStyle="bold" />
+
+            <EditText
+                android:id="@+id/pNum"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:textSize="16sp"
+                android:gravity="center_vertical"
+                android:hint="Ponsel" />
+
+        </LinearLayout>
+
         <Button
-            android:id="@+id/book"
+            android:id="@+id/bookk"
             android:layout_width="149dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginTop="15dp"
             android:onClick="books"
-            android:text="Booking Now!" />
+            android:text="Book" />
 
 
 
