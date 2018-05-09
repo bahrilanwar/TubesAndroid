@@ -15,7 +15,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.DatePicker;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.example.android.tubes_android.ListKelasModel;
@@ -134,13 +133,13 @@ public class RecentFragmentAdmin extends Fragment {
                             List<ListKelasModel> list = new ArrayList<>();
                             for(DataSnapshot postSnapshot : dataSnapshot.getChildren()){
                                 ListKelasModel item = postSnapshot.getValue(ListKelasModel.class);
-                                if(item.getDay().equals(a)){
+                                if(item.getDay().equals(b)){
                                     list.add(item);
                                 }
                             }
                             Log.d("FIREBASE::MDATA","num:"+list.size());
 
-                            ListKelasAdapter dataAdapter = new ListKelasAdapter(list, "Sunday", "Monday");
+                            ListKelasAdapter dataAdapter = new ListKelasAdapter(list);
                             recyclerView.setAdapter(dataAdapter);
 
                             loading.dismiss();
@@ -189,7 +188,7 @@ public class RecentFragmentAdmin extends Fragment {
                 }
                 Log.d("FIREBASE::MDATA","num:"+list.size());
 
-                ListKelasAdapter dataAdapter = new ListKelasAdapter(list, "Sunday", "Monday");
+                ListKelasAdapter dataAdapter = new ListKelasAdapter(list);
                 recyclerView.setAdapter(dataAdapter);
 
                 loading.dismiss();

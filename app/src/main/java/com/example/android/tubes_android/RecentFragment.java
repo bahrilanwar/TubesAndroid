@@ -129,7 +129,7 @@ public class RecentFragment extends Fragment {
                             }
                             Log.d("FIREBASE::MDATA","num:"+list.size());
 
-                            ListKelasAdapter dataAdapter = new ListKelasAdapter(list, "Sunday", "Monday");
+                            ListKelasAdapter dataAdapter = new ListKelasAdapter(list);
                             recyclerView.setAdapter(dataAdapter);
 
                             loading.dismiss();
@@ -178,7 +178,7 @@ public class RecentFragment extends Fragment {
                 }
                 Log.d("FIREBASE::MDATA","num:"+list.size());
 
-                ListKelasAdapter dataAdapter = new ListKelasAdapter(list, "Sunday", "Monday");
+                ListKelasAdapter dataAdapter = new ListKelasAdapter(list);
                 recyclerView.setAdapter(dataAdapter);
 
                 loading.dismiss();

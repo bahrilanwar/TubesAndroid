@@ -10,6 +10,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 public class ViewActivity extends AppCompatActivity {
@@ -18,6 +19,7 @@ public class ViewActivity extends AppCompatActivity {
 
     //Attibut Komponen View
     private TextView vUser, vRoomcode, vRoomname, vTime, vDay, vStatus, vNeeds;
+    private LinearLayout lNeeds;
     private Button btnBook;
 
     @SuppressLint("ResourceType")
@@ -39,9 +41,10 @@ public class ViewActivity extends AppCompatActivity {
         vDay = findViewById(R.id.viewDay);
         vStatus = findViewById(R.id.viewStatus);
         vNeeds = findViewById(R.id.viewNeeds);
+        lNeeds = findViewById(R.id.lneeds);
         btnBook = findViewById(R.id.book);
 
-        vNeeds.setVisibility(View.INVISIBLE);
+
 
         //Pengecekan Item yang dikirimkan intent Lain
         Intent ini = getIntent();
@@ -60,6 +63,7 @@ public class ViewActivity extends AppCompatActivity {
                 btnBook.setVisibility(View.INVISIBLE);
             } else {
                 btnBook.setVisibility(View.VISIBLE);
+                lNeeds.setVisibility(View.INVISIBLE);
             }
 
             /* btnBook.setOnClickListener(new View.OnClickListener() {

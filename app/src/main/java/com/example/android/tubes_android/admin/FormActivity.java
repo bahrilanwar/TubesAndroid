@@ -30,7 +30,8 @@ public class FormActivity extends AppCompatActivity {
     private String status, rName, time;
     private Button btnBook;
     private Spinner RN;
-    private RadioButton rbB, rbO;
+    private RadioButton rb;
+    private RadioGroup rg;
 
     private FirebaseAuth mAuth;
 
@@ -62,9 +63,9 @@ public class FormActivity extends AppCompatActivity {
         time1 = findViewById(R.id.startTime);
         time2 = findViewById(R.id.finishTime);
         day = findViewById(R.id.lblDay);
-        rbB = findViewById(R.id.rbBooked);
-        rbO = findViewById(R.id.rbOpened);
+        rg = findViewById(R.id.rbg);
 //        room = findViewById(R.id.rbg);
+
         btnBook = findViewById(R.id.book);
 
 
@@ -115,17 +116,33 @@ public class FormActivity extends AppCompatActivity {
                 break;
         }
 
-        time = time1 +" - "+ time2;
+//        time = time1 +" - "+ time2;
+
+        String user = "";
+        String needs = "";
+        String idnumber = "";
+        String pn = "";
+
+        int selectedId = rg.getCheckedRadioButtonId();
+
+        // find the radiobutton by returned id
+        rb = findViewById(selectedId);
 
         String key = ref.push().getKey();
+        String s = time1.getText().toString();
+        String f = time2.getText().toString();
+        String jam = s + " - " + f;
         ref.child(key).setValue(new ListKelasModel(
                 key,
+                user.toString(),
                 RC.getText().toString(),
                 rName,
-                time,
+                jam,
                 day.getText().toString(),
-                status
-
+                rb.getText().toString(),
+                needs.toString(),
+                idnumber.toString(),
+                pn.toString()
         ));
 //        Log.d("RB",status);
         Toast.makeText(FormActivity.this, "Uploaded!", Toast.LENGTH_SHORT).show();

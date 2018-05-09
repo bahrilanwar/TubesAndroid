@@ -1,11 +1,8 @@
-package com.example.android.tubes_android;
+package com.example.android.tubes_android.admin;
 
 import android.app.ProgressDialog;
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -14,6 +11,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.android.tubes_android.ListKelasAdapter;
+import com.example.android.tubes_android.ListKelasModel;
+import com.example.android.tubes_android.R;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -29,13 +29,13 @@ import java.util.List;
  * Class untuk Fragment dari My, menampilkan uploadan dariuser yang saat ini login
  * A simple {@link Fragment} subclass.
  */
-public class MyFragment extends Fragment {
+public class MyFragmentAdmin extends Fragment {
 
     private RecyclerView recyclerView;
 
     private FirebaseAuth auth;
 
-    public MyFragment() {
+    public MyFragmentAdmin() {
         // Required empty public constructor
     }
 
@@ -57,8 +57,8 @@ public class MyFragment extends Fragment {
     }
 
     /*
-    * Method LoadData digunakan untuk mengambil data dari FireBase
-    * */
+     * Method LoadData digunakan untuk mengambil data dari FireBase
+     * */
     private void loadData(){
         final ProgressDialog loading=new ProgressDialog(getContext());
         loading.setMessage("Getting Data ...");
@@ -76,10 +76,8 @@ public class MyFragment extends Fragment {
             public void onDataChange(DataSnapshot dataSnapshot) {
                 List<ListKelasModel> list = new ArrayList<>();
                 for(DataSnapshot postSnapshot : dataSnapshot.getChildren()){
-                    String a = auth.getCurrentUser().getEmail();
                     ListKelasModel item = postSnapshot.getValue(ListKelasModel.class);
-                    assert item != null;
-                    if(item.getUser().equals(a)) {
+                    if(item.getStatus().equals("Booked")) {
                         list.add(item);
                     }
                 }

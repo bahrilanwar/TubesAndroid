@@ -22,7 +22,7 @@ public class ListKelasAdapter extends RecyclerView.Adapter<ListKelasAdapter.Phot
     private List<ListKelasModel> list;
 
     //Mengisi Daftar data saat Class dipanggil
-    public ListKelasAdapter(List<ListKelasModel> list, String sunday, String monday) {
+    public ListKelasAdapter(List<ListKelasModel> list) {
         this.list = list;
     }
 
@@ -110,9 +110,8 @@ public class ListKelasAdapter extends RecyclerView.Adapter<ListKelasAdapter.Phot
         * Method yang digunakan untuk menuju intent detail sesuai item yang dipilih
         * */
         public void toDetail(ListKelasModel model){
-            Intent i = new Intent(context.getApplicationContext(),ViewActivity.class);
+            Intent i = new Intent(context.getApplicationContext(),FormBooking.class);
             i.putExtra(ViewActivity.EXTRA_ITEM, model);
-
             context.startActivity(i);
         }
     }

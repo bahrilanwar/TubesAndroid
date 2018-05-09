@@ -27,7 +27,7 @@ public class SignUpActivity extends AppCompatActivity {
     private TextView email;
     private EditText passw;
     private ProgressDialog progressDialog;
-
+// menghubungkan project
     private FirebaseAuth firebaseAuth;
 
     @Override
@@ -44,6 +44,7 @@ public class SignUpActivity extends AppCompatActivity {
         passw = findViewById(R.id.inpass);
         Button signup = findViewById(R.id.btnSignup);
 
+// menghubungkan project nama baranmg
         firebaseAuth = FirebaseAuth.getInstance();
 
         signup.setOnClickListener(new View.OnClickListener() {

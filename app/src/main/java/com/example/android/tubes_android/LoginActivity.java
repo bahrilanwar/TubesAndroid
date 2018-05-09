@@ -27,7 +27,7 @@ public class LoginActivity extends AppCompatActivity {
     private TextView signup;
     private Button btnSignin;
     private ProgressDialog loading;
-
+// menghubungkan project dg firebase dg cara auth
     private FirebaseAuth mAuth;
 
     @Override

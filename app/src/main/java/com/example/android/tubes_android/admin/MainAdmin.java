@@ -25,7 +25,6 @@ import com.example.android.tubes_android.ListKelasAdapter;
 import com.example.android.tubes_android.LoginActivity;
 import com.example.android.tubes_android.MyFragment;
 import com.example.android.tubes_android.R;
-import com.example.android.tubes_android.RecentFragment;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
@@ -69,7 +68,7 @@ public class MainAdmin extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.toolbar2);
         setSupportActionBar(toolbar);
 
-        new ListKelasAdapter(photosList, "Sunday", "Monday");
+        new ListKelasAdapter(photosList);
 
         dateFormatter = new SimpleDateFormat("dd-MMM-yyyy", Locale.US);
         dayFormatter = new SimpleDateFormat("EEEE", Locale.US);
@@ -253,7 +252,7 @@ public class MainAdmin extends AppCompatActivity {
     private void setupViewPager(ViewPager pager){
         com.example.android.tubes_android.admin.MainAdmin.ViewPagerAdapter viewPagerAdapter = new com.example.android.tubes_android.admin.MainAdmin.ViewPagerAdapter(getSupportFragmentManager());
         viewPagerAdapter.addFragment(new RecentFragmentAdmin(), "List All Class");
-        viewPagerAdapter.addFragment(new MyFragment(), "Booked Class");
+        viewPagerAdapter.addFragment(new MyFragmentAdmin(), "Booked Class");
         pager.setAdapter(viewPagerAdapter);
     }
 

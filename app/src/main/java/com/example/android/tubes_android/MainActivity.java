@@ -13,13 +13,12 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
@@ -28,7 +27,6 @@ import com.google.firebase.database.FirebaseDatabase;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 
@@ -66,7 +64,7 @@ public class MainActivity extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        new ListKelasAdapter(photosList, "Sunday", "Monday");
+        new ListKelasAdapter(photosList);
 
         dateFormatter = new SimpleDateFormat("dd-MMM-yyyy", Locale.US);
         dayFormatter = new SimpleDateFormat("EEEE", Locale.US);
@@ -106,7 +104,8 @@ public class MainActivity extends AppCompatActivity {
         mFirebaseDatabase=FirebaseDatabase.getInstance();
 
         Intent jauh = new Intent(MainActivity.this, ViewActivity.class);
-        jauh.putExtra("userr", makeUsername(mAuth.getCurrentUser().getEmail()));
+        jauh.putExtra("userr", mAuth.getCurrentUser().toString());
+        Log.d("Intent bla", mAuth.getCurrentUser().toString());
     }
 
 //
@@ -182,7 +181,8 @@ public class MainActivity extends AppCompatActivity {
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.my_options_menu, menu);
-        if(mAuth.getCurrentUser()!=null){menu.findItem(R.id.action_myuser).setTitle(makeUsername(mAuth.getCurrentUser().getEmail()));}
+        if(mAuth.getCurrentUser()!=null){
+            menu.findItem(R.id.action_myuser).setTitle(makeUsername(mAuth.getCurrentUser().getEmail()));}
         return true;
     }
 
